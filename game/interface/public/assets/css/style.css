@@ -1,0 +1,4 @@
+html {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.9375rem, 0.7143rem + 0.5952vw, 1.25rem);
+}

@@ -1,0 +1,18 @@
+permettra de faire la map
+mapeditor.org
+
+faire les perso
+https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/#
+
+cahier des charges 2023
+https://docs.google.com/document/d/17TbAQmakuNxq-wiE1mIWEuquPiLXmdu7fd-yuy-WXfE/edit#
+https://docs.google.com/document/d/1VTplouhpDeVRCV3NTh99ixXQ8ASkHN-8ed7704f2Bhw/edit#heading=h.p1l7u12dgulp
+
+tutoriel Unity 
+https://www.youtube.com/playlist?list=PLUWxWDlz8PYKnrd27LTqOxL2lr3KhEVRT
+
+tuto unity - git
+https://www.youtube.com/watch?v=KFmanEeW3LU
+
+gitignore pour unity
+https://github.com/github/gitignore/blob/main/Unity.gitignore

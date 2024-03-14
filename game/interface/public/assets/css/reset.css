@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    box-sizing: border-box;
+}
+
+*::before, *::after {
+    box-sizing: border-box;
+}
+
+a, button {
+    cursor: pointer;
+}
+
+a, button, span {
+    color: currentColor;
+}
+
+a {
+    text-decoration: none;
+}
+
+button, input, textarea {
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+img, svg, video {
+    display: block;
+    max-width: 100%;
+}
+
+svg[data-icon] {
+    color: currentColor;
+}
+
+ul, ol {
+    list-style-type: none;
+}

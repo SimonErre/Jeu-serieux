@@ -1,0 +1,165 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
+skinparam style strictuml
+hide empty members
+
+
+Package controller {
+    class GameController {
+        +GENDERS : any[]
+        +SKINS : any[]
+        +CSPS : any[]
+        +CHARACTERS : any[]
+        +REACTIONS : any[]
+        +STATISTICS : any[]
+        +characterOptions : CharacterOptions
+
+        +storeStatistics(statistics)
+        +storeCharacters(characters)
+        +storeGenders(genders)
+        +storeCsps(csps)
+        +storeReactions(reactions)
+        +storeSession(session)
+        +storeCharacter(name)
+        +setAltercation(id, label, dojo, characterName)
+        +createSession(characterOptions)
+        react(reaction)
+    }
+
+    class Resume {
+        +statistics
+        +history
+        +constructor(statistics, history)
+    }
+
+}
+GameController *--> "+session\n1" model.Session
+GameController *--> "+character\n1" model.Character
+GameController *--> "+altercation\n1" model.Altercation
+
+Package model {
+    class Altercation {
+        +id
+        +label
+        +dojo
+        +character
+        +background
+        +BACKGROUNDS : string[]
+        +constructor(id, label, dojo, characterName)
+        +react(reaction)
+    }
+    Altercation ..> Reaction : <<use>>
+    Altercation o--> "+character\n1" GameController
+
+    class Reaction {
+        +id
+        +label
+        +icon
+        +message
+        +constructor(id, label, icon, message)
+    }
+
+    class Character {
+        +name
+        +specs
+        +constructor(name, specs)
+    }
+
+    class CharacterOptions {
+        +gender
+        +skin
+        +csp
+        +constructor(gender, skin, csp)
+        +selectGender(gender)
+        +selectSkin(skin)
+        +selectCsp(csp)
+        +nextGender(direction)
+        +nextCsp(direction)
+        +buildRequestOptions() : character
+        +buildImageURI(direction) : String
+    }
+    CharacterOptions o--> "+csp\n1" GameController
+
+    class Session {
+        +code
+        +name
+        +character
+        +KEY_NAME : String
+        +constructor(code, name, character)
+        +SaveCookieSession()
+        +SaveLocalStorageSession()
+    }
+
+    class Statistic {
+        +id
+        +label
+        +defaultScore
+        +constructor(id, label, defaultScore)
+    }
+
+    class tipsModel {
+        +tips : String[]
+        +constructor()
+        +getTip() : String
+    }
+}
+
+
+Package view {
+    class AcceuilView {
+        - tuto()
+        - credit()
+        - quitter()
+    }
+
+    class AltercationView {
+        -customText
+        -player
+        -npc
+        -text
+        -playerImage
+        -npcImage
+        -background
+        -reactions
+        -react(reaction)
+        -created()
+    }
+
+    class CharacterChoiceView {
+        -skin
+        -gender
+        -csp
+        -imageURI
+        -next()
+        -nextSexe(direction)
+        -nextOutfit(direction)
+        -nextColor(direction)
+    }
+
+    class CreditView {
+        -developers()
+    }
+
+    class LoadingView {
+        -tips
+    }
+
+    class StatView {
+        -history
+        -stats
+        -playerAvatar
+        +reaction(altercation)
+        +character(altercation)
+        +statistic(stat)
+    }
+    AcceuilView ..> GameController : <<use>>
+    AltercationView ..> GameController : <<use>>
+    CharacterChoiceView ..> GameController : <<use>>
+    CreditView ..> GameController : <<use>>
+    LoadingView ..> GameController : <<use>>
+    StatView ..> GameController : <<use>>
+    
+}
+@enduml
